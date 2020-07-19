@@ -13,7 +13,9 @@ start pip install SpeechRecognition
 start pip install google
 start pip install wikipedia
 start pip install requests
+pip install pyinstaller
 timeout 5
 echo if done all click button enter
 pause
+pyinstaller Vevoast.py
 exit
