@@ -28,6 +28,8 @@ while run:
     you = "p"
     if face == "happy":
         print(":)")
+    if face == "no":
+        print("@_@")
     if face == "sad":
         print(":(")
     if mode == "on":
@@ -154,7 +156,7 @@ while run:
         print(wiki)
         speak.Speak(wiki)
         run = True
-    if "bye" in you or "exit" in you or "stop" in you:
+    if "bye" in you or "exit" in you or "stop" in you or "close" in you:
         face = "happy"
         print("bye")
         speak.Speak("bye")
@@ -189,7 +191,77 @@ while run:
         print(f.read())
         time.sleep(5)
         os.system('cls')
-        run =True
+        run = True
+    if "favorite food" in you:
+        face = "happy"
+        print("my favorite food is iron")
+        speak.Speak("my favorite food is iron")
+        run = True
+    if "favorite drinks" in you:
+        face = "happy"
+        print("my favorite drinks is soda")
+        speak.Speak("my favorite drinks is soda")
+        run = True
+    if "favorite school" in you:
+        face = "happy"
+        print("my favorite school is Assistant school")
+        speak.Speak("my favorite school is Assistant school")
+        run = True
+    if "wear" in you:
+        face = "happy"
+        print("I like to wear leather")
+        speak.Speak("I like to wear leather")
+        run = True
+    if "Vector" in you or "vector" in you:
+        face = "happy"
+        print("i'm here")
+        speak.Speak("i'm here")
+        run = True
+    if "have an error" in you or "error" in you and "you" in you:
+        face = "sad"
+        print("yes i have an error is my name")
+        speak.Speak("yes i have an error is my name")
+        run = True
+    if "do" in you and "hack" in you:
+        face = "happy"
+        print("no i'm not been hack")
+        speak.Speak("no i'm not been hack")
+        run = True
+    if "where" in you and "you" in you and "form" in you:
+        face = "happy"
+        print("i form Vietnam")
+        speak.Speak("i form Vietnam")
+        run = True
+    if "where" in you and "you" in you and "live":
+        face = "happy"
+        print("i live in Vietnam sever")
+        speak.Speak("i live in Vietnam sever")
+        run = True
+    if "favorite color" in you or "color" in you and "like" in you:
+        face = "happy"
+        print("my favorite colors is red and green")
+        speak.Speak("my favorite colors is red and green")
+        run = True
+    if "do you" in you and "like" in you or "do you" in you and "favorite" in you:
+        face = "happy"
+        print("yes, i like")
+        speak.Speak("yes, i like")
+        run = True
+    if "hot" in you or "cold" in you:
+        face = "happy"
+        print("i feel normal")
+        speak.Speak("i fell normal")
+        run = True
+    if "have" in you and "hair" in you:
+        face = "no"
+        print("i'm not have hair")
+        speak.Speak("i'm not have hair")
+        run = True
+    if "connect" in you and "internet" in you:
+        face = "happy"
+        print("i can connect you can search google or wikipedia by say it")
+        speak.Speak("i can connect you can search google or wikipedia by say it")
+        run = True
     elif you == "":
         face = "bad"
         print("i don't understand?")
