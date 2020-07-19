@@ -49,6 +49,7 @@ while run:
                 mode = "on"
                 speak.Speak("voice on")
                 run = True
+                '''
             if "google" in you or "search" in you:
                 with sr.Microphone() as source:
                     print("search:")
@@ -56,13 +57,15 @@ while run:
                     print("loading...")
                     try:
                         text = r.recognize_google(audio)
-                        for j in search(text, tld="co.in", num=10, stop=10, pause=2):
+                        for j in search(text, tld="co.in", num=10, stop=10, pause=1):
                             print(j)
                     except:
                         face = "sad"
                         print("i don't understand?")
                         speak.Speak("i don't understand?")
                         run = True
+                    run = True
+                    '''
             if "wikipedia" in you or "wiki" in you:
                 with sr.Microphone() as source:
                     print("search:")
@@ -79,6 +82,7 @@ while run:
                         print("i don't understand?")
                         speak.Speak("i don't understand?")
                         run = True
+                    run = True
     elif mode == "off":
         you = input()
     if "voice" in you and "off" in you:
