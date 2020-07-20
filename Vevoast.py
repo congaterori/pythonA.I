@@ -262,6 +262,9 @@ while run:
         print("i can connect you can search google or wikipedia by say it")
         speak.Speak("i can connect you can search google or wikipedia by say it")
         run = True
+    if "clear" in you or "clean" in you:
+        os.system('cls')
+        run = True
     elif you == "":
         face = "bad"
         print("i don't understand?")
