@@ -1,7 +1,6 @@
 import os
 import time
 import calendar
-import pyglet
 import win32com.client as wincl
 import pyaudio
 import googlesearch
