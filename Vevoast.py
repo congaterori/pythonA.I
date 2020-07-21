@@ -1,11 +1,13 @@
 import os
 import time
 import calendar
+import pyglet
 import win32com.client as wincl
 import pyaudio
 import googlesearch
 import wikipedia
 import speech_recognition as sr
+from PIL import Image
 from googlesearch import search
 speak = wincl.Dispatch("SAPI.SpVoice")
 r = sr.Recognizer()
@@ -264,6 +266,41 @@ while run:
         run = True
     if "clear" in you or "clean" in you:
         os.system('cls')
+        run = True
+    if "love" in you and "me" in you:
+        face = "happy"
+        print("Maybe")
+        speak.Speak("Maybe")
+        import webbrowser; webbrowser.open('anime_lol.gif')
+        '''
+        im = Image.open("anime_lol.gif")
+        im.seek(0)
+        im.save("frame0.png")
+        im.seek(1)
+        im.save("frame1.png")
+        im.seek(2)
+        im.save("frame2.png")
+        '''
+        '''
+        animation = pyglet.image.load_animation('anime_lol.gif')
+        animSprite = pyglet.sprite.Sprite(animation)
+        
+        
+        w = animSprite.width
+        h = animSprite.height
+        
+        window = pyglet.window.Window(width=w, height=h)
+        
+        r,g,b,alpha = 0.5,0.5,0.8,0.5
+        
+        
+        pyglet.gl.glClearColor(r,g,b,alpha)
+        @window.event
+        def on_draw():
+            window.clear()
+            animSprite.draw()
+        pyglet.app.run()
+        '''
         run = True
     elif you == "":
         face = "bad"
