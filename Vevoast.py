@@ -6,7 +6,7 @@ import pyaudio
 import googlesearch
 import wikipedia
 import speech_recognition as sr
-from PIL import Image
+#from PIL import Image
 from googlesearch import search
 speak = wincl.Dispatch("SAPI.SpVoice")
 r = sr.Recognizer()
