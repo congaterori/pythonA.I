@@ -1,12 +1,13 @@
 import os
 import time
 import calendar
+from playsound import playsound
 import win32com.client as wincl
 import pyaudio
 import googlesearch
 import wikipedia
 import speech_recognition as sr
-from PIL import Image
+#from PIL import Image
 from googlesearch import search
 speak = wincl.Dispatch("SAPI.SpVoice")
 r = sr.Recognizer()
@@ -315,7 +316,7 @@ while run:
     if "chrome" in you:
         speak.Speak("open chrome")
         try:
-            os.startfile('C:\Program Files (x86)\Google\Chrome\Application\chrome.exe')
+            os.startfile(r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe')
         except:
             print("error program or file or folder not exist")
             speak.Speak("error program or file or folder not exist")
@@ -323,7 +324,7 @@ while run:
     if "paint" in you:
         speak.Speak("open paint")
         try:
-            os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Paint.lnk')
+            os.startfile(r'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Paint.lnk')
         except:
             print("error program or file or folder not exist")
             speak.Speak("error program or file or folder not exist")
