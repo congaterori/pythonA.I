@@ -12,6 +12,7 @@ speak = wincl.Dispatch("SAPI.SpVoice")
 r = sr.Recognizer()
 a = "hello"
 face = 0
+take = 0
 mode = "off"
 os.system('cls')
 print("What is your name?")
@@ -300,6 +301,73 @@ while run:
             animSprite.draw()
         pyglet.app.run()
         '''
+        run = True
+    if "open" in you:
+        print("file to open")
+        try:
+            fileopen = input()
+            speak.Speak("open " + fileopen)
+            os.startfile(fileopen)
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "chrome" in you:
+        speak.Speak("open chrome")
+        try:
+            os.startfile('C:\Program Files (x86)\Google\Chrome\Application\chrome.exe')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "paint" in you:
+        speak.Speak("open paint")
+        try:
+            os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Paint.lnk')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "store" in you:
+        speak.Speak("open Microsoft store")
+        try:
+            os.startfile('ms-windows-store://home')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "calculator" in you:
+        speak.Speak("open calculator")
+        try:
+            os.startfile('calculator:')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "map" in you:
+        speak.Speak("open Microsoft map")
+        try:
+            os.startfile('bingmaps:')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "wheather" in you:
+        speak.Speak("open Microsoft wheather")
+        try:
+            os.startfile('msnweather:')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "cut" in you:
+        speak.Speak("open screen clip")
+        try:
+            time.sleep(3)
+            os.startfile('ms-screenclip:')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
         run = True
     elif you == "":
         face = "bad"
