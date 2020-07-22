@@ -12,6 +12,7 @@ speak = wincl.Dispatch("SAPI.SpVoice")
 r = sr.Recognizer()
 a = "hello"
 face = 0
+take = 0
 mode = "off"
 os.system('cls')
 print("What is your name?")
@@ -301,8 +302,13 @@ while run:
         pyglet.app.run()
         '''
         run = True
-    elif you == "":
-        face = "bad"
-        print("i don't understand?")
-        speak.Speak("i don't understand?")
+    if "open" in you:
+        print("file to open")
+        try:
+            fileopen = input()
+            speak.Speak("open " + fileopen)
+            os.startfile(fileopen)
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
         run = True
