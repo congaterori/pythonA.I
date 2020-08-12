@@ -14,6 +14,9 @@ a = "hello"
 face = 0
 take = 0
 mode = "off"
+os.system('open sound_python.mp3')
+time.sleep(6)
+os.system('pkill -f iTunes.app')
 os.system('clear')
 print("What is your name?")
 os.system('say What is your name?')
@@ -275,6 +278,7 @@ while run:
         face = "happy"
         print("Maybe")
         os.system('say Maybe')
+        os.system('open /Users/mac/Downloads/pythonA.I-master/anime_lol.gif')
         import webbrowser; webbrowser.open('anime_lol.gif')
         '''
         im = Image.open("anime_lol.gif")
