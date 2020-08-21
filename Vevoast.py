@@ -312,3 +312,16 @@ while run:
             print("error program or file or folder not exist")
             speak.Speak("error program or file or folder not exist")
         run = True
+    if "ask" in you:
+        que = input()
+        client = wolframalpha.Client("PQWP3V-L5L85UAKQ8")
+        bot = client.query(que)
+        answer = next(bot.results).text
+        print(answer)
+        speak.Speak(answer)
+        run = True
+    elif you == "":
+        face = "bad"
+        print("i don't understand?")
+        speak.Speak("i don't understand?")
+        run = True
