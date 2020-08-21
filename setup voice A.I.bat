@@ -13,6 +13,8 @@ start pip install SpeechRecognition
 start pip install google
 start pip install wikipedia
 start pip install requests
+start pip install wolframalpha
+start pip install wolframalpha api
 timeout 5
 echo if done all click button enter
 pause
