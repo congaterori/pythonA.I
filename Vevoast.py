@@ -1,12 +1,13 @@
 import os
 import time
 import calendar
-from playsound import playsound
+#from playsound import playsound
 import win32com.client as wincl
 import pyaudio
 import googlesearch
 import wikipedia
 import speech_recognition as sr
+import wolframalpha
 #from PIL import Image
 from googlesearch import search
 speak = wincl.Dispatch("SAPI.SpVoice")
@@ -369,6 +370,14 @@ while run:
         except:
             print("error program or file or folder not exist")
             speak.Speak("error program or file or folder not exist")
+        run = True
+    if "ask" in you:
+        que = input()
+        client = wolframalpha.Client("PQWP3V-L5L85UAKQ8")
+        bot = client.query(que)
+        answer = next(bot.results).text
+        print(answer)
+        speak.Speak(answer)
         run = True
     elif you == "":
         face = "bad"
