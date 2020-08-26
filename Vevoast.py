@@ -1,12 +1,15 @@
 import os
 import time
 import calendar
+import random
+#from playsound import playsound
 import win32com.client as wincl
 import pyaudio
 import googlesearch
 import wikipedia
 import speech_recognition as sr
-from PIL import Image
+import wolframalpha
+#from PIL import Image
 from googlesearch import search
 speak = wincl.Dispatch("SAPI.SpVoice")
 r = sr.Recognizer()
@@ -181,10 +184,6 @@ while run:
     if "date" in you:
         print(calendar.month(yy, mm))
         run = True
-    if "tell me a joke" in you:
-        print("i'm not an A.I")
-        speak.Speak("i'm not an A.I")
-        run = True
     if "who create you" in you:
         os.system('cls')
         print("i'm make by johnny20061234 the ideal by phucxo")
@@ -313,13 +312,29 @@ while run:
             speak.Speak("error program or file or folder not exist")
         run = True
     if "ask" in you:
-        que = input()
+        que = input("ask:")
         client = wolframalpha.Client("PQWP3V-L5L85UAKQ8")
         bot = client.query(que)
         answer = next(bot.results).text
         print(answer)
         speak.Speak(answer)
         run = True
+    if "joke" in you:
+        randomjoke = random.randint(1,2)
+        if randomjoke == 1:
+            print("Why do we tell actors to “break a leg?”")
+            speak.Speak("Why do we tell actors to “break a leg?”")
+            time.sleep(2)
+            print("Because every play has a cast.")
+            speak.Speak("Because every play has a cast.")
+            run = True
+        if randomjoke == 2:
+            print("Why don’t scientists trust atoms?")
+            speak.Speak("Why don’t scientists trust atoms?")
+            time.sleep(2)
+            print("Because they make up everything.")
+            speak.Speak("Because they make up everything.")
+            run = True
     elif you == "":
         face = "bad"
         print("i don't understand?")
