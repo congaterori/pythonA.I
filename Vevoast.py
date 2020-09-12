@@ -392,6 +392,18 @@ while run:
             print("Because they make up everything.")
             speak.Speak("Because they make up everything.")
             run = True
+    if "math" in you:
+        print("open Microsoft math")
+        os.system('start https://math.microsoft.com/')
+        run = True
+    if "read" in you:
+        print("Machine Comprehension Tasks")
+        os.system('start https://machinereading.azurewebsites.net/')
+        run = True
+    if "picture to html" in you or "image to html" in you:
+        print("open sketch2code")
+        os.system('https://sketch2code.azurewebsites.net/')
+        run = True
     elif you == "":
         face = "bad"
         print("i don't understand?")
