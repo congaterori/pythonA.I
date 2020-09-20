@@ -18,14 +18,25 @@ face = 0
 take = 0
 mode = "off"
 os.system('cls')
-print("What is your name?")
-speak.Speak("What is your name?")
-name = input()
-print("hello " + name)
-speak.Speak("hello" + name)
-print("How old are you?")
-speak.Speak("How old are you?")
-old = input()
+try:
+    os.system('cls')
+    f = open("name.txt", "r")
+    if f.mode == 'r':
+        name = f.read()
+    j = open("old.txt", "r")
+    if j.mode == 'r':
+        old = j.read()
+except:
+    print("What is your name?")
+    speak.Speak("What is your name?")
+    name = input()
+    print("hello " + name)
+    speak.Speak("hello" + name)
+    os.system('echo|set /P ="' + name + '" > name.txt')
+    print("How old are you?")
+    speak.Speak("How old are you?")
+    old = input()
+    os.system('echo|set /P ="' + old + '" > old.txt')
 os.system('cls')
 print("type to chat or say to chat:")
 run = True
@@ -134,7 +145,7 @@ while run:
     if "my" in you and "name" in you:
         face = "happy"
         print("your name is " + name)
-        speak.Speak("your name is " +name)
+        speak.Speak("your name is " + name)
         run = True
     if "good" in you:
         face = "happy"
@@ -311,6 +322,63 @@ while run:
             print("error program or file or folder not exist")
             speak.Speak("error program or file or folder not exist")
         run = True
+    if "chrome" in you:
+        speak.Speak("open chrome")
+        try:
+            os.startfile(r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "paint" in you:
+        speak.Speak("open paint")
+        try:
+            os.startfile(r'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Paint.lnk')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "store" in you:
+        speak.Speak("open Microsoft store")
+        try:
+            os.startfile('ms-windows-store://home')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "calculator" in you:
+        speak.Speak("open calculator")
+        try:
+            os.startfile('calculator:')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "map" in you:
+        speak.Speak("open Microsoft map")
+        try:
+            os.startfile('bingmaps:')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "wheather" in you:
+        speak.Speak("open Microsoft wheather")
+        try:
+            os.startfile('msnweather:')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "cut" in you:
+        speak.Speak("open screen clip")
+        try:
+            time.sleep(3)
+            os.startfile('ms-screenclip:')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
     if "ask" in you:
         que = input("ask:")
         client = wolframalpha.Client("PQWP3V-L5L85UAKQ8")
@@ -335,6 +403,33 @@ while run:
             print("Because they make up everything.")
             speak.Speak("Because they make up everything.")
             run = True
+    if "math" in you:
+        speak.Speak("open Microsoft math")
+        print("open Microsoft math")
+        os.system('start https://math.microsoft.com/')
+        run = True
+    if "read" in you:
+        speak.Speak("open machine Comprehension Tasks")
+        print("open machine Comprehension Tasks")
+        os.system('start https://machinereading.azurewebsites.net/')
+        run = True
+    if "picture to html" in you or "image to html" in you:
+        speak.Speak("open sketch2code")
+        print("open sketch2code")
+        os.system('https://sketch2code.azurewebsites.net/')
+        run = True
+    if "mail" in you and "to" in you:
+        m = you[you.find("o")+1:]
+        m = m.replace(" ", "")
+        speak.Speak("send mail to " + m)
+        print("send mail to " + m)
+        os.system('start mailto:' + m)
+        run = True
+    if "open mail" in you:
+        speak.Speak("open mail")
+        print("open mail")
+        os.system('start mailto:')
+        run = True
     elif you == "":
         face = "bad"
         print("i don't understand?")
