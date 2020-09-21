@@ -322,63 +322,6 @@ while run:
             print("error program or file or folder not exist")
             speak.Speak("error program or file or folder not exist")
         run = True
-    if "chrome" in you:
-        speak.Speak("open chrome")
-        try:
-            os.startfile(r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe')
-        except:
-            print("error program or file or folder not exist")
-            speak.Speak("error program or file or folder not exist")
-        run = True
-    if "paint" in you:
-        speak.Speak("open paint")
-        try:
-            os.startfile(r'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Paint.lnk')
-        except:
-            print("error program or file or folder not exist")
-            speak.Speak("error program or file or folder not exist")
-        run = True
-    if "store" in you:
-        speak.Speak("open Microsoft store")
-        try:
-            os.startfile('ms-windows-store://home')
-        except:
-            print("error program or file or folder not exist")
-            speak.Speak("error program or file or folder not exist")
-        run = True
-    if "calculator" in you:
-        speak.Speak("open calculator")
-        try:
-            os.startfile('calculator:')
-        except:
-            print("error program or file or folder not exist")
-            speak.Speak("error program or file or folder not exist")
-        run = True
-    if "map" in you:
-        speak.Speak("open Microsoft map")
-        try:
-            os.startfile('bingmaps:')
-        except:
-            print("error program or file or folder not exist")
-            speak.Speak("error program or file or folder not exist")
-        run = True
-    if "wheather" in you:
-        speak.Speak("open Microsoft wheather")
-        try:
-            os.startfile('msnweather:')
-        except:
-            print("error program or file or folder not exist")
-            speak.Speak("error program or file or folder not exist")
-        run = True
-    if "cut" in you:
-        speak.Speak("open screen clip")
-        try:
-            time.sleep(3)
-            os.startfile('ms-screenclip:')
-        except:
-            print("error program or file or folder not exist")
-            speak.Speak("error program or file or folder not exist")
-        run = True
     if "ask" in you:
         que = input("ask:")
         client = wolframalpha.Client("PQWP3V-L5L85UAKQ8")
@@ -425,7 +368,7 @@ while run:
         print("send mail to " + m)
         os.system('start mailto:' + m)
         run = True
-    if "open mail" in you:
+    if "mail" in you and "to" not in you:
         speak.Speak("open mail")
         print("open mail")
         os.system('start mailto:')
