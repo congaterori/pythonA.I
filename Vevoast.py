@@ -10,6 +10,7 @@ import wikipedia
 import speech_recognition as sr
 import wolframalpha
 #from PIL import Image
+from textblob import TextBlob
 from googlesearch import search
 speak = wincl.Dispatch("SAPI.SpVoice")
 r = sr.Recognizer()
@@ -429,6 +430,13 @@ while run:
         speak.Speak("open mail")
         print("open mail")
         os.system('start mailto:')
+        run = True
+    if "text" in you:
+        edit = input(str("input text here: "))
+        edited = TextBlob(edit)
+        edit_text = str(edited.correct())
+        speak.Speak("the correct is " + edit_text)
+        print("edit: "+ edit_text)
         run = True
     elif you == "":
         face = "bad"
