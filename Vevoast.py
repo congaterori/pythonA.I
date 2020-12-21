@@ -2,6 +2,9 @@ import os
 import time
 import calendar
 import random
+from akinator.async_aki import Akinator
+import akinator
+import asyncio
 #from playsound import playsound
 import win32com.client as wincl
 import pyaudio
@@ -10,9 +13,11 @@ import wikipedia
 import speech_recognition as sr
 import wolframalpha
 #from PIL import Image
+from textblob import TextBlob
 from googlesearch import search
 speak = wincl.Dispatch("SAPI.SpVoice")
 r = sr.Recognizer()
+aki = Akinator()
 a = "hello"
 face = 0
 take = 0
@@ -101,6 +106,45 @@ while run:
                         speak.Speak("i don't understand?")
                         run = True
                     run = True
+            if "game" in you:
+                async def main():
+                    q = await aki.start_game()
+                    print("choose: yes,no,idk,probably,probably not")
+                    print("choose: y,n,i,p,pn")
+                    while aki.progression <= 80:
+                        print(q)
+                        speak.Speak(q)
+                        # a = input(q + "\n")
+                        with sr.Microphone() as source:
+                            audio = r.record(source, duration=5)
+                            print("loading...")
+                            try:
+                                lgame = r.recognize_google(audio)
+                                print(lgame)
+                            except:
+                                print("i can't understand?")
+                                speak.Speak("i can't understand?")
+                        if lgame == "back":
+                            try:
+                                q = await aki.back()
+                            except akinator.CantGoBackAnyFurther:
+                                pass
+                        else:
+                            q = await aki.answer(lgame)
+                    await aki.win()
+                    correct = input(f"It's {aki.first_guess['name']} ({aki.first_guess['description']})! Was I correct?\n{aki.first_guess['absolute_picture_path']}\n\t")
+                    speak.Speak(correct)
+                    if correct.lower() == "yes" or correct.lower() == "y":
+                        print("Yay\n")
+                        speak.Speak("Yay")
+                    else:
+                        print("Oof\n")
+                        speak.Speak("")
+
+                loop = asyncio.get_event_loop()
+                loop.run_until_complete(main())
+                loop.close()
+                run = True
     elif mode == "off":
         you = input()
     if "voice" in you and "off" in you:
@@ -322,6 +366,63 @@ while run:
             print("error program or file or folder not exist")
             speak.Speak("error program or file or folder not exist")
         run = True
+    if "chrome" in you:
+        speak.Speak("open chrome")
+        try:
+            os.startfile(r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "paint" in you:
+        speak.Speak("open paint")
+        try:
+            os.startfile(r'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Paint.lnk')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "store" in you:
+        speak.Speak("open Microsoft store")
+        try:
+            os.startfile('ms-windows-store://home')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "calculator" in you:
+        speak.Speak("open calculator")
+        try:
+            os.startfile('calculator:')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "map" in you:
+        speak.Speak("open Microsoft map")
+        try:
+            os.startfile('bingmaps:')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "wheather" in you:
+        speak.Speak("open Microsoft wheather")
+        try:
+            os.startfile('msnweather:')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
+    if "cut" in you:
+        speak.Speak("open screen clip")
+        try:
+            time.sleep(3)
+            os.startfile('ms-screenclip:')
+        except:
+            print("error program or file or folder not exist")
+            speak.Speak("error program or file or folder not exist")
+        run = True
     if "ask" in you:
         que = input("ask:")
         client = wolframalpha.Client("PQWP3V-L5L85UAKQ8")
@@ -372,6 +473,43 @@ while run:
         speak.Speak("open mail")
         print("open mail")
         os.system('start mailto:')
+        run = True
+    if "text" in you:
+        edit = input(str("input text here: "))
+        edited = TextBlob(edit)
+        edit_text = str(edited.correct())
+        speak.Speak("the correct is " + edit_text)
+        print("edit: "+ edit_text)
+        run = True
+    if "game" in you:
+        async def mainl():
+            q = await aki.start_game()
+            print("choose: yes,no,idk,probably,probably not")
+            print("choose: y,n,i,p,pn")
+            while aki.progression <= 80:
+                speak.Speak(q)
+                a = input(q + "\n")
+                if a == "b":
+                    try:
+                        q = await aki.back()
+                    except akinator.CantGoBackAnyFurther:
+                        pass
+                else:
+                    q = await aki.answer(a)
+            await aki.win()
+            correct = input(f"It's {aki.first_guess['name']} ({aki.first_guess['description']})! Was I correct?\n{aki.first_guess['absolute_picture_path']}\n\t")
+            _ji = input(f"{aki.first_guess['absolute_picture_path']}")
+            speak.Speak(correct)
+            if correct.lower() == "yes" or correct.lower() == "y":
+                print("Yay\n")
+                speak.Speak("Yay")
+            else:
+                print("Oof\n")
+                speak.Speak("")
+
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(mainl())
+        loop.close()
         run = True
     elif you == "":
         face = "bad"
