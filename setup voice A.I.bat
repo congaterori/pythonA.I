@@ -1,7 +1,7 @@
 @echo off
 title setup for voice A.I
-cls
 color a
+cls
 msg * Please install Python first
 msg * Don't close setup file
 start pip install pyaudio
