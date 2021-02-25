@@ -313,6 +313,11 @@ while run:
         print("i'm not have hair")
         speak.Speak("i'm not have hair")
         run = True
+    if "what" in you and "can" in you and "you" in you and "do" in you:
+        face = "happy"
+        print("i can help you")
+        speak.Speak("i can help you")
+        run= True
     if "connect" in you and "internet" in you:
         face = "happy"
         print("i can connect you can search google or wikipedia by say it")
