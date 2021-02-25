@@ -7,8 +7,7 @@ msg * Don't close setup file
 pip install --upgrade pip
 pip install wheel
 start pip install pyaudio
-start pip install pipwin
-start pipwin install pyaudio
+start pip install pipwin && pipwin install pyaudio
 start pip install pypiwin32
 start pip install pywin32
 start pip install pypiwn32
