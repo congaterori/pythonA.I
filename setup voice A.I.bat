@@ -5,8 +5,7 @@ cls
 msg * Please install Python first
 msg * Don't close setup file
 start pip install pyaudio
-start pip install pipwin
-start pipwin install pyaudio
+start pip install pipwin && pipwin install pyaudio
 start pip install pywin32
 start pip install pypiwn32
 start pip install SpeechRecognition
