@@ -361,6 +361,65 @@ while run:
         pyglet.app.run()
         '''
         run = True
+    if "i" in you and "like" in you:
+        like = you.split("like ",1)[1]
+        likerandom = random.randint(1,3)
+        n = open("hate.txt", "r")
+        nread = n.read()
+        if like in nread:
+            outfile = open("hate.txt", "w")
+            nread = nread.replace(like, "")
+            outfile.write(nread)
+            outfile.close()
+        n.close()
+        #os.system('echo ' + like + ' >> like.txt')
+        os.system('echo|set /P ="' + like + " " + '" >> like.txt')
+        if likerandom == 1:
+            print("wow you like " + like)
+            speak.Speak("wow you like " + like)
+        if likerandom == 2:
+            print("cool you like " + like)
+            speak.Speak("cool you like " + like)
+        if likerandom == 3:
+            print("so you like " + like)
+            speak.Speak("so you like " + like)
+        run = True
+    if "i" in you and "hate" in you:
+        hate = you.split("hate ",1)[1]
+        haterandom = random.randint(1,3)
+        hat = open("like.txt", "r")
+        hatread = hat.read()
+        if hate in hatread:
+            outhatfile = open("like.txt", "w")
+            hatread = hatread.replace(hate, "")
+            outhatfile.write(hatread)
+            outhatfile.close()
+        hat.close()
+        #os.system('echo " ' + hate + ' " >> hate.txt')
+        os.system('echo|set /P ="' + hate + " " + '" >> hate.txt')
+        if haterandom == 1:
+            print("well you hate " + hate)
+            speak.Speak("well you hate " + hate)
+        if haterandom == 2:
+            print("huh you hate " + hate)
+            speak.Speak("huh you hate " + hate)
+        if haterandom == 3:
+            print("ok so you hate " + hate)
+            speak.Speak("ok so you hate " + hate)
+        run = True
+    if "i" in you and "sad" in you:
+        face = "happy"
+        try:
+            h = open("like.txt", "r")
+            if h.mode == 'r':
+                like = h.read()
+            print("maybe if you have some " + like + "you feel much better")
+            speak.Speak("maybe if you have some " + like + "you feel much better")
+            run = True
+        except:
+            print("i hope i can make you fun")
+            speak.Speak("i hope i can make you fun")
+            run = True
     if "open" in you:
         print("file to open")
         try:
