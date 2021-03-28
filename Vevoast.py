@@ -187,15 +187,15 @@ while run:
         speak.Speak("my name is Vector")
         run = True
     if "my" in you and "name" in you:
+        if "what" in you:
+            face = "happy"
+            print("your name is " + name)
+            speak.Speak("your name is " + name)
+            run = True
         face = "happy"
         cutname = you.split("is ",1)[1]
         print("ok so your name is " + cutname)
         speak.Speak("ok so your name is " + cutname)
-        run = True
-    if "what" in you and "my" in you and "name" in you:
-        face = "happy"
-        print("your name is " + name)
-        speak.Speak("your name is " + name)
         run = True
     if "good" in you:
         face = "happy"
