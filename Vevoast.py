@@ -188,6 +188,12 @@ while run:
         run = True
     if "my" in you and "name" in you:
         face = "happy"
+        cutname = you.split("is ",1)[1]
+        print("ok so your name is " + cutname)
+        speak.Speak("ok so your name is " + cutname)
+        run = True
+    if "what" in you and "my" in you and "name" in you:
+        face = "happy"
         print("your name is " + name)
         speak.Speak("your name is " + name)
         run = True
@@ -283,7 +289,7 @@ while run:
         print("no i'm not been hack")
         speak.Speak("no i'm not been hack")
         run = True
-    if "where" in you and "you" in you and "form" in you:
+    if "where" in you and "you" in you and "from" in you:
         face = "happy"
         print("i form Vietnam")
         speak.Speak("i form Vietnam")
@@ -489,11 +495,15 @@ while run:
         run = True
     if "ask" in you:
         que = input("ask:")
-        client = wolframalpha.Client("PQWP3V-L5L85UAKQ8")
-        bot = client.query(que)
-        answer = next(bot.results).text
-        print(answer)
-        speak.Speak(answer)
+        try:
+            client = wolframalpha.Client("PQWP3V-L5L85UAKQ8")
+            bot = client.query(que)
+            answer = next(bot.results).text
+            print(answer)
+            speak.Speak(answer)
+        except:
+            print("i don't understand?")
+            speak.Speak("i don't understand?")
         run = True
     if "joke" in you:
         randomjoke = random.randint(1,2)
