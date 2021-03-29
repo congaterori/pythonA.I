@@ -9,11 +9,11 @@ if "%version%" == "6.1" goto win7
 if "%version%" == "10.0" goto win10
 :win7
 cls
-powershell -Command "(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/congaterori/pythonA.I/beta-for-windows-10/ver.txt', 'ver.txt')"
+powershell -Command "(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/congaterori/pythonA.I/beta-for-windows-10/ver.txt', 'ver.txt')" > nul
 goto next
 :win10
 cls
-powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/congaterori/pythonA.I/beta-for-windows-10/ver.txt -OutFile ver.txt"
+powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/congaterori/pythonA.I/beta-for-windows-10/ver.txt -OutFile ver.txt" > nul
 goto next
 :next
 cls
