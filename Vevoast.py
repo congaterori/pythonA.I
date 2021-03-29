@@ -228,16 +228,16 @@ while run:
         speak.Speak("bye")
         time.sleep(2)
         run = False
+    x = time.localtime(time.time())
+    nam = x[0]
+    thang = x[1]
+    ngay = x[2]
+    gio = x[3]
+    phut = x[4]
+    giay = x[5]
+    yy = nam
+    mm = thang
     if "time" in you:
-        x = time.localtime(time.time())
-        nam = x[0]
-        thang = x[1]
-        ngay = x[2]
-        gio = x[3]
-        phut = x[4]
-        giay = x[5]
-        yy = nam
-        mm = thang
         print("Time:")
         print(gio, phut)
         speak.Speak(gio, phut)
@@ -585,6 +585,10 @@ while run:
         loop.run_until_complete(mainl())
         loop.close()
         run = True
+    if "update" == you:
+        os.system('cls')
+        print("checking for update...")
+        os.system('update.bat')
     elif you == "":
         face = "bad"
         print("i don't understand?")
