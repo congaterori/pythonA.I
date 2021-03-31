@@ -69,6 +69,7 @@ echo unzip.exe -o pythonA.I-master.zip > nul >> up.bat
 echo timeout 2 > nul >> up.bat
 echo Del pythonA.I-master.zip >> up.bat
 echo Del unzip.exe >> up.bat
+echo start %CD%\pythonA.I-beta-for-windows-10\del.bat >> up.bat
 echo Del up.bat >> up.bat
 start up.bat
 cd %now%
@@ -81,6 +82,7 @@ echo unzip.exe -o pythonA.I-master.zip > nul >> up.bat
 echo timeout 2 > nul >> up.bat
 echo Del pythonA.I-master.zip >> up.bat
 echo Del unzip.exe >> up.bat
+echo start %CD%\pythonA.I-beta-for-windows-10\del.bat >> up.bat
 echo Del up.bat >> up.bat
 start up.bat
 cd %now%
