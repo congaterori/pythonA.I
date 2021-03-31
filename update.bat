@@ -44,7 +44,7 @@ echo downloading...
 Del ver1.txt
 cd ..
 echo %CD%
-pause
+timeout 5 > nul
 if "%version%" == "6.1" goto win7download
 if "%version%" == "10.0" goto win10download
 ::if not exist pythonA.I-master.zip goto done
@@ -65,9 +65,10 @@ if "%version%" == "10.0" goto win10download
 :win7download
 echo powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/congaterori/pythonA.I/archive/refs/heads/beta-for-windows-10.zip', 'pythonA.I-master.zip')" > up.bat
 echo unzip.exe -o pythonA.I-master.zip > nul >> up.bat
-echo timeout 5 > nul >> up.bat
+echo timeout 2 > nul >> up.bat
 echo Del pythonA.I-master.zip >> up.bat
 echo Del unzip.exe >> up.bat
+echo start Del up.bat & exit >> up.bat
 start up.bat
 cd %now%
 endlocal
@@ -75,9 +76,10 @@ exit
 :win10download
 echo powershell -Command "Invoke-WebRequest https://github.com/congaterori/pythonA.I/archive/refs/heads/beta-for-windows-10.zip -OutFile pythonA.I-master.zip" > up.bat
 echo unzip.exe -o pythonA.I-master.zip > nul >> up.bat
-echo timeout 5 > nul >> up.bat
+echo timeout 2 > nul >> up.bat
 echo Del pythonA.I-master.zip >> up.bat
 echo Del unzip.exe >> up.bat
+echo start Del up.bat & exit >> up.bat
 start up.bat
 cd %now%
 endlocal
