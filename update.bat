@@ -69,6 +69,7 @@ echo unzip.exe -o pythonA.I-master.zip > nul >> up.bat
 echo timeout 2 > nul >> up.bat
 echo Del pythonA.I-master.zip >> up.bat
 echo Del unzip.exe >> up.bat
+echo Del up.bat & exit >> up.bat
 start up.bat
 cd %now%
 endlocal
@@ -80,6 +81,7 @@ echo unzip.exe -o pythonA.I-master.zip > nul >> up.bat
 echo timeout 2 > nul >> up.bat
 echo Del pythonA.I-master.zip >> up.bat
 echo Del unzip.exe >> up.bat
+echo Del up.bat & exit >> up.bat
 start up.bat
 cd %now%
 endlocal
