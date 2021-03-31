@@ -1,5 +1,8 @@
 @echo off
 cls
+set now = %CD%
+echo %now%
+pause
 REN ver.txt ver1.txt
 setlocal
 for /f "tokens=4-5 delims=. " %%i in ('ver') do set VERSION=%%i.%%j
@@ -34,29 +37,48 @@ if %que% == 1 goto yes
 if %que% == 2 goto done
 :yes
 cls
-echo downloading...
-if "%version%" == "6.1" powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/congaterori/pythonA.I/archive/refs/heads/beta-for-windows-10.zip', 'pythonA.I-master.zip')"
-if "%version%" == "10.0" powershell -Command "Invoke-WebRequest https://github.com/congaterori/pythonA.I/archive/refs/heads/beta-for-windows-10.zip -OutFile pythonA.I-master.zip"
-if not exist pythonA.I-master.zip goto done
-unzip.exe pythonA.I-master.zip > nul
+echo %CD%
 pause
-timeout 5 > nul
-Del pythonA.I-master.zip
-Del ver.txt
-REN ver1.txt ver.txt
-set now = %CD%
+copy unzip.exe ..\unzip.exe
+echo downloading...
+Del ver1.txt
 cd ..
-echo md C:\Users\DELL\Downloads\pythonA.I-beta-for-windows-10 > up.bat
-echo xcopy /A "pythonA.I-beta-for-windows-10\pythonA.I-beta-for-windows-10" "C:\Users\DELL\Downloads\pythonA.I-beta-for-windows-10" >> up.bat
-echo RD /S /Q pythonA.I-beta-for-windows-10 >> up.bat
-echo md pythonA.I-beta-for-windows-10 >> up.bat
-echo xcopy /A "C:\Users\DELL\Downloads\pythonA.I-beta-for-windows-10" "C:\Users\DELL\Documents\pythonA.I-beta-for-windows-10" >> up.bat
-echo RD /S /Q C:\Users\DELL\Downloads\pythonA.I-beta-for-windows-10 >> up.bat
-echo msg * update done >> up.bat
+echo %CD%
+pause
+if "%version%" == "6.1" goto win7download
+if "%version%" == "10.0" goto win10download
+::if not exist pythonA.I-master.zip goto done
+::unzip.exe pythonA.I-master.zip > nul
+::timeout 5 > nul
+::Del pythonA.I-master.zip
+::echo md C:\Users\DELL\Downloads\pythonA.I-beta-for-windows-10 > up.bat
+::echo xcopy /A "pythonA.I-beta-for-windows-10\pythonA.I-beta-for-windows-10" "C:\Users\DELL\Downloads\pythonA.I-beta-for-windows-10" >> up.bat
+::echo RD /S /Q pythonA.I-beta-for-windows-10 >> up.bat
+::echo md pythonA.I-beta-for-windows-10 >> up.bat
+::echo xcopy /A "C:\Users\DELL\Downloads\pythonA.I-beta-for-windows-10" "C:\Users\DELL\Documents\pythonA.I-beta-for-windows-10" >> up.bat
+::echo RD /S /Q C:\Users\DELL\Downloads\pythonA.I-beta-for-windows-10 >> up.bat
+::echo msg * update done >> up.bat
+::start up.bat
+::timeout 1 > nul
+::Del up.bat
+::cd %CD%
+:win7download
+echo powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/congaterori/pythonA.I/archive/refs/heads/beta-for-windows-10.zip', 'pythonA.I-master.zip')" > up.bat
+echo unzip.exe pythonA.I-master.zip > nul >> up.bat
+echo timeout 5 > nul >> up.bat
+echo Del pythonA.I-master.zip >> up.bat
 start up.bat
-timeout 1 > nul
-Del up.bat
-cd %CD%
+cd %now%
+endlocal
+exit
+:win10download
+echo powershell -Command "Invoke-WebRequest https://github.com/congaterori/pythonA.I/archive/refs/heads/beta-for-windows-10.zip -OutFile pythonA.I-master.zip" > up.bat
+echo unzip.exe pythonA.I-master.zip > nul >> up.bat
+echo timeout 5 > nul >> up.bat
+echo Del pythonA.I-master.zip >> up.bat
+echo Del unzip.exe >> up.bat
+start up.bat
+cd %now%
 endlocal
 exit
 :no
