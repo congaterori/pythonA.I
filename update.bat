@@ -67,9 +67,8 @@ echo powershell -Command "(New-Object Net.WebClient).DownloadFile('https://githu
 echo unzip.exe -f pythonA.I-master.zip > nul >> up.bat
 echo timeout 5 > nul >> up.bat
 echo Del pythonA.I-master.zip >> up.bat
+echo start cmd /k Del up.bat & exit >> up.bat
 start up.bat
-pause
-Del up.bat
 cd %now%
 endlocal
 exit
@@ -80,8 +79,6 @@ echo timeout 5 > nul >> up.bat
 echo Del pythonA.I-master.zip >> up.bat
 echo Del unzip.exe >> up.bat
 start up.bat
-pause
-Del up.bat
 cd %now%
 endlocal
 exit
