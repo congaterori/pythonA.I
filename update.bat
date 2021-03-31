@@ -1,8 +1,6 @@
 @echo off
 cls
-set now = %CD%
-echo %now%
-pause
+set now=%cd%
 REN ver.txt ver1.txt
 setlocal
 for /f "tokens=4-5 delims=. " %%i in ('ver') do set VERSION=%%i.%%j
@@ -24,7 +22,9 @@ setlocal DisableDelayedExpansion
 for /f "Delims=" %%a in (ver.txt) do set ver=%%a
 setlocal DisableDelayedExpansion
 for /f "Delims=" %%a in (ver1.txt) do set ver1=%%a
-FC ver.txt ver1.txt > NUL && goto same || goto no
+::FC ver.txt ver1.txt > nul && goto same || goto no
+:: if new >= old
+if %ver% GEQ %ver1% goto same || goto no
 :same
 cls
 echo your version: %ver1%
