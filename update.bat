@@ -37,14 +37,11 @@ if %que% == 1 goto yes
 if %que% == 2 goto done
 :yes
 cls
-echo %CD%
-pause
 copy unzip.exe ..\unzip.exe
 echo downloading...
 Del ver1.txt
 cd ..
-echo %CD%
-timeout 5 > nul
+timeout 3 > nul
 if "%version%" == "6.1" goto win7download
 if "%version%" == "10.0" goto win10download
 ::if not exist pythonA.I-master.zip goto done
