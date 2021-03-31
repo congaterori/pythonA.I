@@ -64,22 +64,20 @@ if "%version%" == "10.0" goto win10download
 ::cd %CD%
 :win7download
 echo powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/congaterori/pythonA.I/archive/refs/heads/beta-for-windows-10.zip', 'pythonA.I-master.zip')" > up.bat
-echo unzip.exe -f pythonA.I-master.zip > nul >> up.bat
+echo unzip.exe -o pythonA.I-master.zip > nul >> up.bat
 echo timeout 5 > nul >> up.bat
 echo Del pythonA.I-master.zip >> up.bat
 echo Del unzip.exe >> up.bat
-echo start cmd /k cd %CD% & Del up.bat & exit >> up.bat
 start up.bat
 cd %now%
 endlocal
 exit
 :win10download
 echo powershell -Command "Invoke-WebRequest https://github.com/congaterori/pythonA.I/archive/refs/heads/beta-for-windows-10.zip -OutFile pythonA.I-master.zip" > up.bat
-echo unzip.exe -f pythonA.I-master.zip > nul >> up.bat
+echo unzip.exe -o pythonA.I-master.zip > nul >> up.bat
 echo timeout 5 > nul >> up.bat
 echo Del pythonA.I-master.zip >> up.bat
 echo Del unzip.exe >> up.bat
-echo start cmd /k cd %CD% & Del up.bat & exit >> up.bat
 start up.bat
 cd %now%
 endlocal
